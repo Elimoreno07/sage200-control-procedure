@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import os
 import shutil
 import sys
 from pathlib import Path
@@ -11,6 +10,9 @@ from openpyxl import load_workbook
 
 
 EXTENSIONES_EXCEL = {".xlsx", ".xlsm"}
+CARPETA_CONTROL_PROCEDURE = Path(
+    r"C:\Users\elisabeth.moreno\OneDrive - Sage Software, Inc\CONTROL PROCEDURE"
+)
 
 
 class ErrorControlProcedure(Exception):
@@ -23,12 +25,6 @@ def pedir_dato(mensaje: str) -> str:
     if not valor:
         raise ErrorControlProcedure("El valor indicado no puede estar vacío.")
     return valor
-
-
-def normalizar_ruta(ruta_introducida: str) -> Path:
-    """Admite rutas de Windows pegadas con comillas y variables de entorno."""
-    ruta_sin_comillas = ruta_introducida.strip().strip("\"'")
-    return Path(os.path.expandvars(ruta_sin_comillas)).expanduser()
 
 
 def buscar_fichero_origen(carpeta: Path, version_anterior: str) -> Path:
@@ -161,8 +157,8 @@ def main() -> int:
     try:
         version_anterior = pedir_dato("Versión anterior (ej. 2026.85.000): ")
         nueva_version = pedir_dato("Nueva versión (ej. 2026.86.000): ")
-        ruta = pedir_dato("Ruta local de la carpeta de los Excel: ")
-        carpeta = normalizar_ruta(ruta)
+        carpeta = CARPETA_CONTROL_PROCEDURE
+        print(f"Carpeta de trabajo: {carpeta}")
 
         destino = crear_control_procedure(
             version_anterior, nueva_version, carpeta
