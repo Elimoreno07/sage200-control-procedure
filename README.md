@@ -17,7 +17,7 @@ El script no sobrescribe un fichero de destino existente.
 La carpeta de trabajo está fijada en:
 
 ```text
-C:\Users\elisabeth.moreno\OneDrive - Sage Software, Inc\1.Release Notes\4.Sage 200\CONTROL-PROCEDURE\2026
+C:\Users\elisabeth.moreno\OneDrive - Sage Software, Inc\CONTROL PROCEDURE
 ```
 
 ## Requisitos

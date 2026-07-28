@@ -11,8 +11,7 @@ from openpyxl import load_workbook
 
 EXTENSIONES_EXCEL = {".xlsx", ".xlsm"}
 CARPETA_CONTROL_PROCEDURE = Path(
-    r"C:\Users\elisabeth.moreno\OneDrive - Sage Software, Inc"
-    r"\1.Release Notes\4.Sage 200\CONTROL-PROCEDURE\2026"
+    r"C:\Users\elisabeth.moreno\OneDrive - Sage Software, Inc\CONTROL PROCEDURE"
 )
 
 
