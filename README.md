@@ -17,8 +17,12 @@ El script no sobrescribe un fichero de destino existente.
 La carpeta de trabajo está fijada en:
 
 ```text
-C:\Users\elisabeth.moreno\OneDrive - Sage Software, Inc\CONTROL PROCEDURE
+C:\Users\elisabeth.moreno\OneDrive - Sage Software, Inc\TechDoc - 2026
 ```
+
+`TechDoc - 2026` es el acceso directo sincronizado con la carpeta
+`CONTROL-PROCEDURE/2026` de SharePoint. Al guardar el nuevo Excel en esta ruta,
+OneDrive realiza automáticamente la subida al sitio corporativo.
 
 ## Requisitos
 
