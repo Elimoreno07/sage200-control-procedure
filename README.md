@@ -1,53 +1,125 @@
-# Generador de Control Procedure para Sage 200
+# Sage 200 Control Procedure
 
-Script para crear el fichero Excel **Control Procedure** de una nueva versión a
-partir del fichero de la versión anterior.
+Aplicación de escritorio para crear una nueva versión del Excel **Control
+Procedure** de Sage 200 sin usar Python, Git ni Visual Studio Code.
 
-## Qué hace
+## Funcionalidad
 
-1. Solicita la versión anterior y la nueva versión.
-2. Busca un `.xlsx` o `.xlsm` que contenga la versión anterior en el nombre.
-3. Crea una copia cuyo nombre contiene la nueva versión.
-4. Limpia el contenido de la columna F, desde la fila 2 hasta la última fila con
-   datos, en la hoja activa.
-5. Mantiene la cabecera, los formatos y el resto del libro.
+- Interfaz gráfica para Windows creada con Tkinter.
+- Selección de la carpeta de trabajo mediante el Explorador.
+- Detección automática de la última versión numérica disponible.
+- Propuesta de la siguiente revisión.
+- Creación del destino sin sobrescribir ficheros existentes.
+- Sustitución de la versión origen por la versión destino en todas las hojas.
+- Limpieza de la columna F desde la fila 2 en la hoja activa.
+- Conservación de estilos, formatos, fórmulas y estructura del libro.
+- Ventana de progreso y resumen final.
+- Log independiente por ejecución.
+- Publicación automática en la biblioteca corporativa de SharePoint mediante el
+  acceso sincronizado `TechDoc - 2026`.
+- Compatibilidad con `.xlsx` y `.xlsm`.
 
-El script no sobrescribe un fichero de destino existente.
+## Uso de la aplicación
 
-La carpeta de trabajo está fijada en:
+Ejecuta:
 
 ```text
-C:\Users\elisabeth.moreno\OneDrive - Sage Software, Inc\CONTROL PROCEDURE
+Sage200ControlProcedure.exe
 ```
 
-## Requisitos
+Después:
+
+1. Selecciona la carpeta si la propuesta no es correcta.
+2. Indica la versión origen y la versión destino.
+3. Pulsa **Generar nueva versión**.
+
+El botón **Duplicar última versión** detecta el Excel más reciente, completa la
+versión origen y propone la revisión siguiente. Solo es necesario revisar o
+indicar la versión destino y pulsar **Generar nueva versión**.
+
+Consulta [MANUAL_USO.md](MANUAL_USO.md) para las instrucciones completas.
+
+## Carpeta predeterminada
+
+La aplicación propone este acceso de OneDrive:
+
+```text
+C:\Users\<usuario>\OneDrive - Sage Software, Inc\TechDoc - 2026
+```
+
+Este acceso debe estar sincronizado con `CONTROL-PROCEDURE/2026` en SharePoint.
+La ruta se construye con el usuario de Windows actual y se puede cambiar desde la
+interfaz.
+
+Aunque se elija otra carpeta de trabajo, la aplicación copia también el resultado
+al acceso corporativo `TechDoc - 2026`. El resumen final confirma la publicación
+y ofrece un botón **Abrir SharePoint**.
+
+## Desarrollo
+
+Requisitos:
 
 - Windows
 - Python 3.11 o posterior
 
-## Instalación
-
-Abre PowerShell dentro de esta carpeta y ejecuta:
+Instalación:
 
 ```powershell
-python -m pip install -r requirements.txt
+py -m pip install -r requirements.txt
 ```
 
-## Uso
+Ejecutar la interfaz:
 
 ```powershell
-python crear_control_procedure.py
+py app.py
 ```
 
-Ejemplo de datos solicitados:
+Ejecutar la alternativa por consola:
+
+```powershell
+py crear_control_procedure.py
+```
+
+Ejecutar las pruebas:
+
+```powershell
+py -m unittest discover -s tests -v
+```
+
+## Generar el `.exe`
+
+Haz doble clic en `build.bat` o ejecuta:
+
+```powershell
+build.bat
+```
+
+El resultado será un único archivo:
 
 ```text
-Versión anterior (ej. 2026.85.000): 2026.85.000
-Nueva versión (ej. 2026.86.000): 2026.86.000
+dist\Sage200ControlProcedure.exe
 ```
 
-## Recomendación
+`build_exe.py` contiene la configuración reproducible de PyInstaller. El
+ejecutable se genera en modo ventana, sin consola, e incluye Python, Tkinter y
+openpyxl.
 
-Cierra en Excel el fichero de destino antes de ejecutar el script. Si Windows
-impide abrirlo o guardarlo, el programa mostrará un mensaje indicando que debe
-cerrarse.
+## Estructura
+
+```text
+app.py                         Interfaz gráfica
+crear_control_procedure.py     Lógica de negocio y entrada por consola
+build.bat                      Compilación sencilla para Windows
+build_exe.py                   Configuración de PyInstaller
+requirements.txt               Dependencias
+MANUAL_USO.md                  Manual para QA y mantenimiento
+tests/                         Pruebas automáticas
+```
+
+## Logs
+
+Cada ejecución crea un log en:
+
+```text
+%LOCALAPPDATA%\Sage200ControlProcedure\logs
+```
