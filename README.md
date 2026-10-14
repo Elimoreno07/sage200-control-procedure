@@ -100,6 +100,17 @@ El resultado será un único archivo:
 dist\Sage200ControlProcedure.exe
 ```
 
+En el equipo utilizado para generar esta versión, el ejecutable se encuentra en:
+
+```text
+C:\Users\elisabeth.moreno\OneDrive - Sage Software, Inc\Documents\Install Product\control-procedure-excel\dist\Sage200ControlProcedure.exe
+```
+
+Esta ruta es local y solamente funciona en ese equipo. Para que otros usuarios
+puedan descargar el programa sin disponer de Python, el archivo
+`Sage200ControlProcedure.exe` debe adjuntarse a una **Release de GitHub**. No es
+necesario añadir el ejecutable al historial del código fuente.
+
 `build_exe.py` contiene la configuración reproducible de PyInstaller. El
 ejecutable se genera en modo ventana, sin consola, e incluye Python, Tkinter y
 openpyxl.
