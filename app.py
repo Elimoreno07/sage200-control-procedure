@@ -24,8 +24,8 @@ from crear_control_procedure import (
 
 
 TITULO = "Sage 200 · Control Procedure"
-COLOR_PRINCIPAL = "#007F64"
-COLOR_PRINCIPAL_ACTIVO = "#006A54"
+COLOR_PRINCIPAL = "#0067C0"
+COLOR_PRINCIPAL_ACTIVO = "#004F94"
 COLOR_FONDO = "#F4F6F8"
 COLOR_TEXTO = "#1F2933"
 
@@ -94,17 +94,6 @@ class AplicacionControlProcedure(tk.Tk):
         )
         estilo.configure("TEntry", padding=7, font=("Segoe UI", 10))
         estilo.configure("TButton", padding=(12, 8), font=("Segoe UI", 10))
-        estilo.configure(
-            "Principal.TButton",
-            padding=(18, 11),
-            font=("Segoe UI", 11, "bold"),
-            foreground="white",
-            background=COLOR_PRINCIPAL,
-        )
-        estilo.map(
-            "Principal.TButton",
-            background=[("active", COLOR_PRINCIPAL_ACTIVO), ("disabled", "#9FB8B1")],
-        )
 
     def _crear_interfaz(self) -> None:
         contenedor = ttk.Frame(self, style="App.TFrame", padding=28)
@@ -156,10 +145,25 @@ class AplicacionControlProcedure(tk.Tk):
         separador = ttk.Separator(contenedor)
         separador.grid(row=7, column=0, columnspan=3, sticky="ew", pady=24)
 
-        self.boton_generar = ttk.Button(
+        # El tema nativo Vista ignora el fondo de ttk.Button en Windows.
+        # tk.Button mantiene el contraste en reposo, al pulsar y deshabilitado.
+        self.boton_generar = tk.Button(
             contenedor,
             text="Generar nueva versión",
-            style="Principal.TButton",
+            font=("Segoe UI", 11, "bold"),
+            background=COLOR_PRINCIPAL,
+            foreground="white",
+            activebackground=COLOR_PRINCIPAL_ACTIVO,
+            activeforeground="white",
+            disabledforeground="#E2E8F0",
+            relief="flat",
+            borderwidth=0,
+            highlightthickness=2,
+            highlightbackground=COLOR_FONDO,
+            highlightcolor=COLOR_PRINCIPAL_ACTIVO,
+            padx=18,
+            pady=11,
+            takefocus=True,
             command=self._iniciar_generacion,
         )
         self.boton_generar.grid(row=8, column=0, columnspan=3, sticky="ew")
