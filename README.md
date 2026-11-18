@@ -3,6 +3,27 @@
 Aplicación de escritorio para crear una nueva versión del Excel **Control
 Procedure** de Sage 200 sin usar Python, Git ni Visual Studio Code.
 
+## Ejecutable actualizado con el botón visible
+
+El botón **Generar nueva versión** tiene fondo azul intenso y texto blanco
+legible desde que se abre la aplicación, sin necesidad de pasar el ratón.
+El texto también permanece visible mientras el botón está deshabilitado durante
+la generación.
+
+En el equipo de Elisabeth, el ejecutable actualizado está en:
+
+```text
+C:\Users\elisabeth.moreno\OneDrive - Sage Software, Inc\Documents\ChatGPT\QA FISCAL IMPRESOS\output\ControlProcedure-boton-visible\Sage200ControlProcedure.exe
+```
+
+Para abrir su carpeta, copia esta ruta en la barra del Explorador de Windows:
+
+```text
+C:\Users\elisabeth.moreno\OneDrive - Sage Software, Inc\Documents\ChatGPT\QA FISCAL IMPRESOS\output\ControlProcedure-boton-visible
+```
+
+Estas rutas son locales a ese equipo; no son enlaces de descarga desde GitHub.
+
 ## Funcionalidad
 
 - Interfaz gráfica para Windows creada con Tkinter.
@@ -100,10 +121,10 @@ El resultado será un único archivo:
 dist\Sage200ControlProcedure.exe
 ```
 
-En el equipo utilizado para generar esta versión, el ejecutable se encuentra en:
+La copia lista para usar de la versión con el botón corregido se encuentra en:
 
 ```text
-C:\Users\elisabeth.moreno\OneDrive - Sage Software, Inc\Documents\Install Product\control-procedure-excel\dist\Sage200ControlProcedure.exe
+C:\Users\elisabeth.moreno\OneDrive - Sage Software, Inc\Documents\ChatGPT\QA FISCAL IMPRESOS\output\ControlProcedure-boton-visible\Sage200ControlProcedure.exe
 ```
 
 Esta ruta es local y solamente funciona en ese equipo. Para que otros usuarios
